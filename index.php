@@ -18,6 +18,7 @@
 
     <form method="POST" action="index.php">
         How many words would you like to use?
+        <input type="radio" value="2" name="number_of_words">2
         <input type="radio" value="3" name="number_of_words">3
         <input type="radio" value="4" name="number_of_words">4 
         <input type="radio" value="5" name="number_of_words">5
@@ -40,8 +41,7 @@
     <p>
         Your password is <span id="password"><?php echo $password; ?></span>
     </p>
-
-    <?php echo count($words); ?>
+    
 </div>
 </body>
 </html>
