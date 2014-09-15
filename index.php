@@ -14,6 +14,10 @@
 
 <div class="container">
 
+    <div class="header">
+        <img src="img/passwordtime.png" alt="Password Time!">
+    </div>
+
     <p>Insert an explanation of the app here.</p>
 
     <form method="POST" action="index.php">
@@ -35,7 +39,7 @@
         <select name="cap">
         <option value="0">No</option> 
         <option value="1">Yes</option></select><br>
-        <input type="submit" class="btn btn-default">
+        <input type="submit" class="btn btn-danger">
     </form>
 
     <p>
