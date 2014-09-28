@@ -13,9 +13,11 @@
         input {
             margin: .5em;
         }
-        h4 { margin-bottom: 0px;}
+        h4 { 
+            margin-bottom: 0px;
+        }
         h3 {
-            margin-top: 0.25em;
+            margin-top: 0.1em;
             font-weight: bold;
         }
         .footer { 
@@ -83,7 +85,7 @@
 
             <p>
                 Too lazy to set the parameters yourself?
-                <a href="/p2" class="btn btn-primary btn-xs">Refresh!</a>
+                <a href="/" class="btn btn-primary btn-xs">Refresh!</a>
             </p>
         </div>
     </div>
