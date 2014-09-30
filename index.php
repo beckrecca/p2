@@ -8,23 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <style type="text/css">
-        #PERIL {font-weight:bold;}
-        input {
-            margin: .5em;
-        }
-        h4 { 
-            margin-bottom: 0px;
-        }
-        h3 {
-            margin-top: 0.1em;
-            font-weight: bold;
-        }
-        .footer { 
-            font-size: 0.85em;
-            margin-top: 1.5em;
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Google Font -->
+    <link href='http://fonts.googleapis.com/css?family=Coming+Soon' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
@@ -69,7 +55,7 @@
                         }
                         echo '> ' . $i . ' ';
                     /*
-                        I do the a similar thing below for the drop down boxes!
+                        I do a similar thing below for the drop down boxes!
                         I didn't want to bother writing an HTML form in PHP for
                         simple yes and no boxes, so I apologize for the inconsistency.
                     */
@@ -99,7 +85,7 @@
 
             <p>
                 Too lazy to set the parameters yourself?
-                <a href="/" class="btn btn-primary btn-xs">Refresh!</a>
+                <a href="/p2" class="btn btn-primary btn-xs">Refresh!</a>
             </p>
         </div>
     </div>
