@@ -63,16 +63,31 @@
                 ?><br>
                 Would you like to include a number? 
                 <select name="incl_number">
-                <option value="0"<?php if (isset($_POST["incl_number"])) { if (($_POST["incl_number"]) == 0) { echo ' selected="selected"';}} ?>>No</option>
-                <option value="1"<?php if (isset($_POST["incl_number"])) { if (($_POST["incl_number"]) == 1) { echo ' selected="selected"';}} ?>>Yes</option></select><br>
+                    <option value="0"<?php if (isset($_POST["incl_number"])) { if (($_POST["incl_number"]) == 0) { echo ' selected="selected"';}} ?>>No</option>
+                    <option value="1"<?php if (isset($_POST["incl_number"])) { if (($_POST["incl_number"]) == 1) { echo ' selected="selected"';}} ?>>Yes</option>
+                </select><br>
                 Would you like to include a character? 
                 <select name="incl_char">
-                <option value="0"<?php if (isset($_POST["incl_char"])) { if (($_POST["incl_char"]) == 0) { echo ' selected="selected"';}} ?>>No</option> 
-                <option value="1"<?php if (isset($_POST["incl_char"])) { if (($_POST["incl_char"]) == 1) { echo ' selected="selected"';}} ?>>Yes</option></select><br>
+                    <option value="0"<?php if (isset($_POST["incl_char"])) { if (($_POST["incl_char"]) == 0) { echo ' selected="selected"';}} ?>>No</option> 
+                    <option value="1"<?php if (isset($_POST["incl_char"])) { if (($_POST["incl_char"]) == 1) { echo ' selected="selected"';}} ?>>Yes</option>
+                </select><br>
                 Would you like to capitalize the first letter?
                 <select name="cap">
-                <option value="0"<?php if (isset($_POST["cap"])) { if (($_POST["cap"]) == 0) { echo ' selected="selected"';}} ?>>No</option> 
-                <option value="1"<?php if (isset($_POST["cap"])) { if (($_POST["cap"]) == 1) { echo ' selected="selected"';}} ?>>Yes</option></select><br>
+                    <option value="0"<?php if (isset($_POST["cap"])) { if (($_POST["cap"]) == 0) { echo ' selected="selected"';}} ?>>No</option> 
+                    <option value="1"<?php if (isset($_POST["cap"])) { if (($_POST["cap"]) == 1) { echo ' selected="selected"';}} ?>>Yes</option>
+                </select><br>
+                How would you like the words to conjoin?
+                <select name="concat">
+                    <option value="-"<?php if (isset($_POST["concat"])) { if (($_POST["concat"]) == "-") { echo ' selected="selected"';}} ?>>With-hyphens-like-this</option>
+                    <option value=" "<?php if (isset($_POST["concat"])) { if (($_POST["concat"]) == " ") { echo ' selected="selected"';}} ?>>With regular spaces</option>
+                    <option value=""<?php if (isset($_POST["concat"])) { if (($_POST["concat"]) == "") { echo ' selected="selected"';}} ?>>Nospacesforme</option>
+                    <option value="CamelCase"<?php if (isset($_POST["concat"])) { if (($_POST["concat"]) == "CamelCase") { echo ' selected="selected"';}} ?>>CamelCasePlease</option>
+                </select><br>
+                Do you hate yourself and want sticky caps?
+                <select name="sticky">
+                    <option value="0"<?php if (isset($_POST["sticky"])) { if (($_POST["sticky"]) == 0) { echo ' selected="selected"';}} ?>>No</option>
+                    <option value="1"<?php if (isset($_POST["sticky"])) { if (($_POST["sticky"]) == 1) { echo ' selected="selected"';}} ?>>YeS!1</option>
+                </select><br>
                 <input type="submit" class="btn btn-danger">
             </form>
 
