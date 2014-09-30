@@ -100,7 +100,7 @@
 
             <p>
                 Too lazy to set the parameters yourself?
-                <a href="/p2" class="btn btn-primary btn-xs">Refresh!</a>
+                <a href="/" class="btn btn-primary btn-xs">Refresh!</a>
             </p>
         </div>
     </div>
