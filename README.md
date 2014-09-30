@@ -4,7 +4,7 @@
 <http://p2.beckrecca.me>
 
 ## Description
-It's an XKCD password generator featuring the Key-per from Adventure Time.
+It's an XKCD password generator featuring the Key-per from Adventure Time. It generates a password based on the parameters determined by the user.
 
 ## Demo
 I will do my demo during section with Dan on Thursday, October 2.

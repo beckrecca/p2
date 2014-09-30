@@ -35,11 +35,12 @@
 	else $cap = rand(0,1);
 
 	# Set how to concatenate each word.
+	# Initalize an array of characters/options for concatenating words.
+	$concat_options = array(" ", "-", "", "CamelCase");
 	if (isset($_POST["concat"])) {
 		$concat = $_POST["concat"];
 	}
 	else {
-		$concat_options = array("-", " ", "", "CamelCase"); // sorry I know this is redundant! :(
 		$concat = $concat_options[rand(0, count($concat_options) - 1)];
 	}
 
@@ -75,11 +76,17 @@
 	# If the user wants sticky caps:
 	if ($sticky) $password = stickycaps($password);
 
+	/*************** FUNCTIONS ***************/
+
+	/*
+	* Takes an integer selected by the user, an array of words to use, and a concatenator
+	* option selected by the user. It returns a variable $string, the student's password.
+	*/
 	function generate_password ($number_of_words, array $words, $concat) {
 		# Initialize a string
 		$string = "";
 
-		# Generate n random words and adjoin them.
+		# Generate n random words and conjoin them.
 		for ($i = 0; $i < $number_of_words; $i++) {
 			# Find a random index
 			$index = rand(0, count($words) - 1);
@@ -89,15 +96,20 @@
 				# Capitalize the first letter of the word at $index, and append it to the string.
 				$string = $string . ucfirst($words[$index]);
 			}
+			# If it's not CamelCase, conjoin the words with the selected concatenator.
 			else {
-				# If it's not the first word, join with the selected concatenator.
 				if ($i > 0) $string = $string . $concat . $words[$index];
+				# When it's the first word, don't use any concatenator.
 				else $string = $string . $words[$index];
 			}			
 		}
 		return $string;
 	}
 
+	/*
+	* Takes a string and randomly capitalizes every other word. 
+	* Returns variable $sticky_word.
+	*/
 	function stickycaps ($word) {
 		# Initalize the monster word we will return.
 		$sticky_word = "";
@@ -109,12 +121,12 @@
 			if ($toss) {
 				# If it's an even index, capitalize the letter and add it to the sticky_word
 				if ($i%2 == 0) $sticky_word = $sticky_word . strtoupper($word[$i]);
-				# Otherwise just add the regular letter.
+				# Otherwise just add the regular letter
 				else $sticky_word = $sticky_word . $word[$i];
 			}
 			# Do the opposite if the toss said so.
 			else {
-				# If it's an even index, add the letter to the sticky_word
+				# If it's an even index, add the regular letter to the sticky_word
 				if ($i%2 == 0) $sticky_word = $sticky_word . $word[$i];
 				# Otherwise, capitalize the letter and add it to the sticky_word
 				else $sticky_word = $sticky_word . strtoupper($word[$i]);
@@ -122,3 +134,75 @@
 		}
 		return $sticky_word;
 	}
+
+	/*
+	* Takes two integers and builds radio buttons with corresponding values,
+	* passing that value to the key "number_of_words" 
+	*/
+	function build_number_of_words_checkboxes ($start, $end) {
+		# Loop up through $start and $end inclusively.
+        for ($i = $start; $i <= $end; $i++) {
+        	# Build a radio button with the value $i.
+            echo '<input type="radio" value="' . $i . '" name="number_of_words"';
+            /* If the user has submitted, remember what they submitted
+            *  and check that radio box. */
+            if (isset($_POST["number_of_words"])) {
+                if (($_POST["number_of_words"]) == $i) {
+                    echo ' checked="checked"';
+                }
+            }
+            echo '> ' . $i . ' ';
+        }		
+	}
+
+	/*
+	* Builds a drop down box with the options "No" and "Yes",
+	* assigning it to a given $key. If the user has already submitted,
+	* the drop down boxes mark that option as selected.
+	*/
+	function build_yes_no_dropdowns ($key) {
+		echo '<select name="' . $key . '">';
+		echo '<option value="0"';
+		if (isset($_POST[$key])) { 
+			if (($_POST[$key]) == 0) { 
+				echo ' selected="selected"';
+			}
+		}
+		echo '>No</option>';
+		echo '<option value="1"';
+		if (isset($_POST[$key])) { 
+			if (($_POST[$key]) == 1) { 
+				echo ' selected="selected"';
+			}
+		}
+		# Be obnoxious if this is the key for the sticky caps question
+		if ($key == "sticky") {
+			echo '>YeS!1</option>';
+		}
+		else echo '>Yes</option>';
+		echo '</select>';
+	}
+
+	/*
+	* Builds dropdown boxes specifically for the options the user has
+	* to concatenate the random words, taking an array of the possible options
+	* denoted above.
+	*/
+	function build_concat_dropdowns (array $concat_options) {
+		# Create an array for the menu text.
+		$menu_text = array("With regular spaces", "With-hyphens-like-this", "Nospaces", "CamelCasePlease");
+		echo '<select name="concat">';
+		for ($i = 0; $i < count($concat_options); $i++) {
+			echo '<option value="' . $concat_options[$i] . '"';
+			/* If the user has already submitted, remember
+			*  which option was previously selected. */
+			if (isset($_POST["concat"])) { 
+				if (($_POST["concat"]) == $concat_options[$i]) { 
+					echo ' selected="selected"';
+				}
+			}
+			echo '>' . $menu_text[$i] . '</options>';
+		}
+		echo '</select>';
+	}
+?>

@@ -40,52 +40,23 @@
 
             <form method="POST" action="index.php">
                 <p>How many words would you like to use?
-                <?php 
-                    // Generate radio boxes for numbers 2-7.
-                    for ($i = 2; $i < 7; $i++) {
-                        echo '<input type="radio" value="' . $i . '" name="number_of_words"';
-                        // If the user has submitted, remember what they submitted
-                        // and check that radio box.
-                        if (isset($_POST["number_of_words"])) {
-                            if (($_POST["number_of_words"]) == $i) {
-                                echo ' checked="checked"';
-                            }
-                        }
-                        echo '> ' . $i . ' ';
-                    /*
-                        I do a similar thing below for the drop down boxes!
-                        I didn't want to bother writing an HTML form in PHP for
-                        simple yes and no boxes, so I apologize for the inconsistency.
-                    */
-                    }
-                ?><br>
+                <?php build_number_of_words_checkboxes(2,6); ?>
+                <br>
                 Would you like to include a number? 
-                <select name="incl_number">
-                    <option value="0"<?php if (isset($_POST["incl_number"])) { if (($_POST["incl_number"]) == 0) { echo ' selected="selected"';}} ?>>No</option>
-                    <option value="1"<?php if (isset($_POST["incl_number"])) { if (($_POST["incl_number"]) == 1) { echo ' selected="selected"';}} ?>>Yes</option>
-                </select><br>
+                <?php build_yes_no_dropdowns("incl_number"); ?>
+                <br>
                 Would you like to include a character? 
-                <select name="incl_char">
-                    <option value="0"<?php if (isset($_POST["incl_char"])) { if (($_POST["incl_char"]) == 0) { echo ' selected="selected"';}} ?>>No</option> 
-                    <option value="1"<?php if (isset($_POST["incl_char"])) { if (($_POST["incl_char"]) == 1) { echo ' selected="selected"';}} ?>>Yes</option>
-                </select><br>
+                <?php build_yes_no_dropdowns("incl_char"); ?>
+                <br>
                 Would you like to capitalize the first letter?
-                <select name="cap">
-                    <option value="0"<?php if (isset($_POST["cap"])) { if (($_POST["cap"]) == 0) { echo ' selected="selected"';}} ?>>No</option> 
-                    <option value="1"<?php if (isset($_POST["cap"])) { if (($_POST["cap"]) == 1) { echo ' selected="selected"';}} ?>>Yes</option>
-                </select><br>
+                <?php build_yes_no_dropdowns("cap"); ?>
+                <br>
                 How would you like the words to conjoin?
-                <select name="concat">
-                    <option value="-"<?php if (isset($_POST["concat"])) { if (($_POST["concat"]) == "-") { echo ' selected="selected"';}} ?>>With-hyphens-like-this</option>
-                    <option value=" "<?php if (isset($_POST["concat"])) { if (($_POST["concat"]) == " ") { echo ' selected="selected"';}} ?>>With regular spaces</option>
-                    <option value=""<?php if (isset($_POST["concat"])) { if (($_POST["concat"]) == "") { echo ' selected="selected"';}} ?>>Nospacesforme</option>
-                    <option value="CamelCase"<?php if (isset($_POST["concat"])) { if (($_POST["concat"]) == "CamelCase") { echo ' selected="selected"';}} ?>>CamelCasePlease</option>
-                </select><br>
+                <?php build_concat_dropdowns($concat_options); ?>
+                <br>
                 Do you hate yourself and want sticky caps?
-                <select name="sticky">
-                    <option value="0"<?php if (isset($_POST["sticky"])) { if (($_POST["sticky"]) == 0) { echo ' selected="selected"';}} ?>>No</option>
-                    <option value="1"<?php if (isset($_POST["sticky"])) { if (($_POST["sticky"]) == 1) { echo ' selected="selected"';}} ?>>YeS!1</option>
-                </select><br>
+                <?php build_yes_no_dropdowns("sticky"); ?>
+                <br>
                 <input type="submit" class="btn btn-danger">
             </form>
 
