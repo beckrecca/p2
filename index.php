@@ -56,23 +56,37 @@
 
             <form method="POST" action="index.php">
                 <p>How many words would you like to use?
-                <input type="radio" value="2" name="number_of_words"> 2
-                <input type="radio" value="3" name="number_of_words"> 3
-                <input type="radio" value="4" name="number_of_words"> 4 
-                <input type="radio" value="5" name="number_of_words"> 5
-                <input type="radio" value="6" name="number_of_words"> 6 <br>
+                <?php 
+                    // Generate radio boxes for numbers 2-7.
+                    for ($i = 2; $i < 7; $i++) {
+                        echo '<input type="radio" value="' . $i . '" name="number_of_words"';
+                        // If the user has submitted, remember what they submitted
+                        // and check that radio box.
+                        if (isset($_POST["number_of_words"])) {
+                            if (($_POST["number_of_words"]) == $i) {
+                                echo ' checked="checked"';
+                            }
+                        }
+                        echo '> ' . $i . ' ';
+                    /*
+                        I do the a similar thing below for the drop down boxes!
+                        I didn't want to bother writing an HTML form in PHP for
+                        simple yes and no boxes, so I apologize for the inconsistency.
+                    */
+                    }
+                ?><br>
                 Would you like to include a number? 
                 <select name="incl_number">
-                <option value="0">No</option> number_of_words
-                <option value="1">Yes</option></select><br>
+                <option value="0"<?php if (isset($_POST["incl_number"])) { if (($_POST["incl_number"]) == 0) { echo ' selected="selected"';}} ?>>No</option>
+                <option value="1"<?php if (isset($_POST["incl_number"])) { if (($_POST["incl_number"]) == 1) { echo ' selected="selected"';}} ?>>Yes</option></select><br>
                 Would you like to include a character? 
                 <select name="incl_char">
-                <option value="0">No</option> 
-                <option value="1">Yes</option></select><br>
+                <option value="0"<?php if (isset($_POST["incl_char"])) { if (($_POST["incl_char"]) == 0) { echo ' selected="selected"';}} ?>>No</option> 
+                <option value="1"<?php if (isset($_POST["incl_char"])) { if (($_POST["incl_char"]) == 1) { echo ' selected="selected"';}} ?>>Yes</option></select><br>
                 Would you like to capitalize the first letter?
                 <select name="cap">
-                <option value="0">No</option> 
-                <option value="1">Yes</option></select><br>
+                <option value="0"<?php if (isset($_POST["cap"])) { if (($_POST["cap"]) == 0) { echo ' selected="selected"';}} ?>>No</option> 
+                <option value="1"<?php if (isset($_POST["cap"])) { if (($_POST["cap"]) == 1) { echo ' selected="selected"';}} ?>>Yes</option></select><br>
                 <input type="submit" class="btn btn-danger">
             </form>
 
@@ -85,7 +99,7 @@
 
             <p>
                 Too lazy to set the parameters yourself?
-                <a href="/" class="btn btn-primary btn-xs">Refresh!</a>
+                <a href="/p2" class="btn btn-primary btn-xs">Refresh!</a>
             </p>
         </div>
     </div>

@@ -5,9 +5,9 @@
 	$incl_char;
 	$cap;
 
-	# If the user has submitted, set our variables according to
-	# the user's setting. Otherwise, set our variables to random
-	# values.
+	/* If the user has submitted, set our variables according to
+	  the user's setting. Otherwise, set our variables to random
+	  values. */
 
 	# Set the number of words to be used in the password.
 	if (isset($_POST["number_of_words"])) {
@@ -48,7 +48,7 @@
 	# If the user wants a special character:
 	if ($incl_char) {
 		$chars = array("!", "@", "#", "$", "%", "^", "&", "*", "(", ")");
-		$random_char = $chars[rand(0,9)];
+		$random_char = $chars[rand(0, count($chars) - 1)];
 		$password = $password . $random_char;
 	}
 
@@ -56,18 +56,13 @@
 	if ($cap) $password = ucfirst($password);
 
 	function generate_password ($number_of_words, array $words) {
-		# Find the number of words in the array.
-		$count = count($words) - 1;
-
 		# Initialize a string
 		$string = "";
 
-		$n = $number_of_words;
-
 		# Generate n random words and adjoin them.
-		for ($i = 0; $i < $n; $i++) {
+		for ($i = 0; $i < $number_of_words; $i++) {
 			# Find a random index
-			$index = rand(0, $count);
+			$index = rand(0, count($words) - 1);
 
 			# Append the word to the string. 
 			# If it's not the first word, join with a hyphen.
@@ -76,4 +71,3 @@
 		}
 		return $string;
 	}
- ?>
