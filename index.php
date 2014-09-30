@@ -29,10 +29,8 @@
                 <a href="http://xkcd.com/936/" target="_blank">
                     this xkcd comic</a>!
                 We'll pick some random words and stick 'em together. 
-                You choose how many! 
-                You can add a number, a special character, 
-                a capitalized first letter, 
-                or any combination of the three.
+                You choose how many! You pick what to add!
+                You say how it joins together!
                 It's a password that's fun, easier to remember and hard
                 for hackers to crack. Mathematical!
             </p>
