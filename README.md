@@ -7,7 +7,7 @@
 It's an XKCD password generator featuring the Key-per from Adventure Time. It generates a password based on the parameters determined by the user.
 
 ## Demo
-I will do my demo during section with Dan on Thursday, October 2.
+I will do my demo during section with Dan on Thursday.
 
 ## Details for teaching team
 * I wanted to do a word scraper but could not figure out how the heck to understand regular expressions, so I gave up on parsing HTML. I did, however, have enough time to play a word association game with myself and manually type up an embarrassingly long array. 
